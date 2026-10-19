@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý đầu sách - Thư viện</title>
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+    <main class="page">
+        <aside class="sidebar">
+            <h2>Thư viện</h2>
+            <p class="sidebar-description">Quản lý sách và mượn trả</p>
+            <nav>
+                <a href="catalog.html" class="nav-link">Tra cứu sách</a>
+                <a href="borrow-and-return.html" class="nav-link">Mượn và trả sách</a>
+                <a href="admin.html" class="nav-link active">Quản lý đầu sách</a>
+            </nav>
+            <a href="index.html" class="nav-link logout-link" id="logoutLink">Đăng xuất</a>
+        </aside>
+
+        <section class="content">
+            <h1>Quản lý đầu sách</h1>
+            <p class="intro">Thêm, sửa hoặc xóa sách trong thư viện.</p>
+
+            <div class="admin-layout">
+                <section class="panel form-panel" id="formPanel" aria-labelledby="formTitle">
+                    <h2 class="panel-title" id="formTitle">Thêm sách mới</h2>
+                    <form id="bookForm">
+                        <div class="form-group">
+                            <label for="bookTitle">Tên sách</label>
+                            <input type="text" id="bookTitle" autocomplete="off" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="bookAuthor">Tác giả</label>
+                            <input type="text" id="bookAuthor" autocomplete="off" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="bookCategory">Thể loại</label>
+                            <input type="text" id="bookCategory" list="categoryList" autocomplete="off" required>
+                            <datalist id="categoryList"></datalist>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="primary-button" id="saveButton">Thêm sách</button>
+                            <button type="button" class="secondary-button" id="cancelButton" hidden>Hủy sửa</button>
+                        </div>
+                        <p id="formMessage" class="form-message" role="status"></p>
+                    </form>
+                </section>
+
+                <section class="panel" aria-labelledby="listTitle">
+                    <h2 class="panel-title" id="listTitle">Danh sách đầu sách</h2>
+                    <label for="searchInput">Tìm trong danh sách</label>
+                    <input type="text" id="searchInput" placeholder="Nhập tên sách, tác giả hoặc thể loại">
+                    <p id="resultCount" class="result-count"></p>
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th scope="col">Tên sách</th>
+                                    <th scope="col">Tác giả</th>
+                                    <th scope="col">Thể loại</th>
+                                    <th scope="col">Trạng thái</th>
+                                    <th scope="col">Thao tác</th>
+                                </tr>
+                            </thead>
+                            <tbody id="bookTableBody"></tbody>
+                        </table>
+                    </div>
+                </section>
+            </div>
+
+            <section class="book-summary" aria-label="Thống kê sách">
+                <div class="summary-box">
+                    <span class="summary-label">Tổng số sách</span>
+                    <strong id="totalBooks">0</strong>
+                </div>
+                <div class="summary-box available-box">
+                    <span class="summary-label">Sách còn sẵn</span>
+                    <strong id="availableBooks">0</strong>
+                </div>
+                <div class="summary-box borrowed-box">
+                    <span class="summary-label">Sách đã mượn</span>
+                    <strong id="borrowedBooks">0</strong>
+                </div>
+            </section>
+        </section>
+    </main>
+    <script src="js/admin.js"></script>
+</body>
+</html>
